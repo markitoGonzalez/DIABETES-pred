@@ -1,0 +1,105 @@
+PROYECTO: PREDICCIÓN DE RIESGO DE DIABETES
+PREDICCIÓN DE RIESGO DE DIABETES- Marco González - Juaquin Perez - Javier Casanova
+Desarrollado por: Marco González - Juaquin Pérez - Javier Casanova
+Tecnologías: Python, Flask, Streamlit, IA (scikit-learn)
+
+LIBRERÍAS NECESARIAS Y SU PROPÓSITO
+
+1. pandas
+   Permite leer, limpiar y manipular el dataset (CSV).
+   Se usa para preparar los datos antes del entrenamiento.
+
+   Importación: 
+   from pandas import DataFrame
+   import pandas as pd
+
+2. numpy
+   Manejo de arreglos numéricos, cálculos y reemplazo de valores faltantes.
+   Facilita operaciones matemáticas en el modelo.
+
+   Importación:
+   import numpy as np
+
+3. scikit-learn (sklearn)
+   Librería de Machine Learning.
+   Se utiliza para:
+   	Dividir datos en entrenamiento/prueba (train_test_split)
+   	Escalar variables (StandardScaler)
+   	Entrenar el modelo (LogisticRegression)
+   	Evaluar rendimiento (accuracy_score, confusion_matrix, classification_report)
+
+   Importaciones:
+   from sklearn.model_selection import train_test_split
+   from sklearn.preprocessing import StandardScaler
+   from sklearn.linear_model import LogisticRegression
+   from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+4. joblib
+   Guarda y carga el modelo entrenado (.sav) y el escalador.
+   Permite reutilizar el modelo sin volver a entrenar.
+
+   Importación:
+   import joblib
+
+5. flask
+   Framework web ligero para crear el backend (API).
+   Maneja peticiones HTTP (POST/GET) y devuelve resultados JSON.
+
+   Importaciones:
+   from flask import Flask, request, jsonify
+
+6. flask-cors
+   Permite que el frontend (Streamlit) se comunique con Flask sin bloqueo CORS.
+
+   Importación:
+   from flask_cors import CORS
+
+7. requests
+   Se usa en la interfaz Streamlit para enviar datos al backend Flask.
+   Envía una petición POST con los valores del formulario.
+
+   Importación:
+   import requests
+
+8. streamlit
+   Crea la interfaz visual (frontend).
+   Permite formularios, botones, colores y visualización de resultados en el navegador.
+
+   Importación:
+   import streamlit as st
+
+9. pathlib
+   Manejo estructurado de rutas y archivos (seguro en Windows y Linux).
+   Se usa para ubicar datasets y modelos.
+
+   Importación:
+   from pathlib import Path
+
+
+INSTALACIÓN GENERAL
+(terminal visual)
+python -m venv venv
+venv\Scripts\activate
+
+Ejecutar en terminal (dentro del entorno virtual venv):
+
+pip install pandas numpy scikit-learn joblib flask flask-cors requests streamlit
+
+
+RESUMEN DEL USO EN EL PROYECTO
+
+modelo/entrenar_modelo.py
+
+Usa: pandas, numpy, scikit-learn, joblib, pathlib.
+Función: Entrena el modelo, lo evalúa y guarda los archivos .sav.
+
+backend/app.py
+
+flask, flask-cors, joblib, numpy, pathlib.
+Función: Crea la API REST para recibir datos y devolver predicciones.
+
+interfaz/interfaz.py
+
+Usa: streamlit, requests.
+Función: Muestra la interfaz gráfica con estilo médico y conecta al backend.
+
